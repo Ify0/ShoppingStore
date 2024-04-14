@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "204986444321",
+    "project_id": "clothingshop-8c75a",
+    "storage_bucket": "clothingshop-8c75a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204986444321:android:8036083785f015281f9160",
+        "android_client_info": {
+          "package_name": "com.example.clothingshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXIoaSvd_6jxzYPHsTVmP_lDCs4JvqgHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204986444321:android:5fb5affb8e2a2f801f9160",
+        "android_client_info": {
+          "package_name": "com.example.shoppingstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXIoaSvd_6jxzYPHsTVmP_lDCs4JvqgHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
