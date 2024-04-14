@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".customer.CartFragment"
+    android:background="#F3F1F1">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraint2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:text="Total Price: €0"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingRight="10dp"
+       />
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/discountTextView"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.461"/>
+
+
+    <EditText
+        android:id="@+id/discountEditText"
+        android:layout_width="100dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="88dp"
+        android:layout_weight="1"
+        android:hint="Enter code"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/discountTextView" />
+
+    <TextView
+        android:id="@+id/discountTextView"
+        android:layout_width="110dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="84dp"
+        android:layout_weight="1"
+        android:text="Discount Code: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/enterButton"
+        android:layout_width="116dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="10dp"
+        android:text="Enter"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/pay_now"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toEndOf="@+id/discountEditText" />
+
+    <Button
+        android:id="@+id/pay_now"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Go to payment"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
