@@ -65,12 +65,9 @@ public class DetailedAdminActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Glide.with(this);
-
         final Object object = getIntent().getSerializableExtra("detail");
-        if(object instanceof Product){
+        if (object instanceof Product) {
             product = (Product) object;
-
         }
 
         detailImg = findViewById(R.id.detailed_img);
@@ -82,7 +79,7 @@ public class DetailedAdminActivity extends AppCompatActivity {
         quantity = findViewById(R.id.quantity);
         delete = findViewById(R.id.deleteImageView);
 
-        if(product != null){
+        if (product != null) {
             price.setText(product.getPrice());
             title.setText(product.getTitle());
             productId = product.getProductId();
@@ -95,6 +92,7 @@ public class DetailedAdminActivity extends AppCompatActivity {
         fTitle = String.valueOf(product.getTitle());
         quant = Integer.parseInt(String.valueOf(product.getQuantity()));
 
+        // Load the image using Glide after setting the product details
         Glide.with(DetailedAdminActivity.this)
                 .load(detailImage)
                 .override(2400, 800)
@@ -103,17 +101,17 @@ public class DetailedAdminActivity extends AppCompatActivity {
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(quant < 10){
+                if (quant < 10) {
                     quant++;
                     quantity.setText(String.valueOf(quant));
                 }
             }
         });
+
         removeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(quant > 1){
+                if (quant > 1) {
                     quant--;
                     quantity.setText(String.valueOf(quant));
                 }
@@ -125,7 +123,6 @@ public class DetailedAdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setNewQuantity();
             }
-
         });
 
         delete.setOnClickListener(new View.OnClickListener() {
@@ -135,34 +132,40 @@ public class DetailedAdminActivity extends AppCompatActivity {
                 fireDB.child(productId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(DetailedAdminActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
                             finish();
+                        } else {
+                            Toast.makeText(DetailedAdminActivity.this, "Failed to delete item", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
         });
-
-
-
     }
 
     private void setNewQuantity() {
+        // Retrieve the updated quantity from the TextView
+        int updatedQuantity = Integer.parseInt(quantity.getText().toString());
 
-        Product product = new Product(fTitle, category, manufacturer, fPrice, quant);
+        // Update the product object with the new quantity
+        product.setQuantity(updatedQuantity);
 
+        // Update the product in the database
         databaseReference.child(productId).setValue(product).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
+                    // If the update is successful, show a toast message
                     Toast.makeText(DetailedAdminActivity.this, "Stock Updated", Toast.LENGTH_SHORT).show();
-                    finish();
+                } else {
+                    // If the update fails, show an error message
+                    Toast.makeText(DetailedAdminActivity.this, "Failed to update stock", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
